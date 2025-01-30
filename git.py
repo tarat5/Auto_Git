@@ -1,11 +1,12 @@
 import os
 import subprocess
 
+
+
 curdir = os.path.dirname(os.path.abspath(__file__))
-print(f"Current script is located in: {curdir}")
+#print(f"Current script is located in: {curdir}")
 
 shell_script = os.path.join(curdir, "git.sh")
-
 arguments = ["--repo", "/home/calEng/Desktop/Link-Outs", "main"]
 
 result = subprocess.run(
@@ -30,6 +31,6 @@ elif result.returncode != 0:
     #print("Error details:")
     #print(result.stderr)
 
-# after gti add . (missing files)
+# after git add . (missing files)
 # git restore --staged Physics.txt
 # git restore Physics.txt
