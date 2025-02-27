@@ -1,13 +1,12 @@
 import os
 import subprocess
 
-
+path_to_repo = "/home/calEng/Desktop/Link-Outs"
 
 curdir = os.path.dirname(os.path.abspath(__file__))
-#print(f"Current script is located in: {curdir}")
 
-shell_script = os.path.join(curdir, "git.sh")
-arguments = ["--repo", "/home/calEng/Desktop/Link-Outs", "main"]
+shell_script = os.path.join(curdir, "linux_git.sh")
+arguments = ["--repo", path_to_repo , "main"]
 
 result = subprocess.run(
     ["bash", shell_script] + arguments,  # Pass the arguments to the shell script
