@@ -44,6 +44,16 @@ if ($Local -eq $Remote) {
     Write-Host "Branches have diverged. Manual intervention required."
 }
 
+# Detect untracked (new) files
+$UntrackedFiles = git ls-files --others --exclude-standard
+
+if ($UntrackedFiles) {
+    Write-Host "There are new untracked files:"
+    Write-Host $UntrackedFiles
+} else {
+    Write-Host "No untracked files found."
+}
+
 # Restore missing files
 $MissingFiles = git ls-tree -r origin/$Branch --name-only | Where-Object { -not (Test-Path $_) }
 
