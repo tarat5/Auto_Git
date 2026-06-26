@@ -1,16 +1,19 @@
 import time
+import json
+import platform
+import uuid
 from pathlib import Path
+from datetime import datetime
 from git import Repo
 
-from get_info import get_device_info
+from V2.functions import *
 
-repo = Repo(r"C:\Users\craig\Desktop\PCB_CAD")
-fetch_head = Path(repo.git_dir) / "FETCH_HEAD"
 
-should_fetch = (
-    not fetch_head.exists()
-    or time.time() - fetch_head.stat().st_mtime > 3600  # 1 hour
-)
 
-if should_fetch:
-    repo.remotes.origin.fetch()
+# -----------------------------
+# Run
+# -----------------------------
+if __name__ == "__main__":
+    run_git_fetch_tracker(r"C:\Users\craig\Desktop\Auto_git")
+
+    # C:\Users\craig\Desktop\PCB_CAD
