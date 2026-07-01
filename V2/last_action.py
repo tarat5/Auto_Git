@@ -6,7 +6,7 @@ from pathlib import Path
 from datetime import datetime
 from git import Repo
 
-from V2.functions import *
+from functions import *
 
 
 

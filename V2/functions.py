@@ -5,6 +5,31 @@ import uuid
 from pathlib import Path
 from datetime import datetime, timezone
 from git import Repo
+import subprocess
+
+
+# -----------------------------
+# Returns Output from Git Fetch
+# -----------------------------
+def git_fetch(repo_dir: str) -> tuple[bool, str]:
+    result = subprocess.run(
+        ["git", "fetch", "--all", "--prune"],
+        cwd=repo_dir,
+        capture_output=True,
+        text=True
+    )
+
+    output = ""
+
+    if result.stdout:
+        output += result.stdout
+
+    if result.stderr:
+        output += result.stderr
+
+    success = result.returncode == 0
+
+    return success, output
 
 # -----------------------------
 # Returns Current Time
